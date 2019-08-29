@@ -9,6 +9,10 @@ class Ammo {
     w_ = w;
     h_ = h;
   }
+
+  void update() {
+    ammo.add(velocity);
+  }
   
   void display() {
     fill(50, 50, 50);
