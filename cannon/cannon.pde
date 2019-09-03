@@ -1,7 +1,7 @@
 Ammo[] ammo = new Ammo[10];
 Power power = new Power();
 int i = 0;
-PVector location = new PVector(50, 600);
+PVector location = new PVector(32, 500);
 PVector velocity = new PVector(0, 0);
 PVector acceleration = new PVector(0, 0.091);
 

@@ -29,10 +29,12 @@ class Power {
   }
   
   void shoot() {
-    // shoot add velocity
-    if (keyPressed == true && key == 32 && velocity.mag() == 0) {
+    if (keyPressed == true && key == 32 && velocity.mag() == 0 && i < 10) {
       velocity.x = power.x;
       velocity.y = power.y;
+      if (i < 10) {
+        i++;
+      }
     }
   }
   
@@ -46,14 +48,14 @@ class Power {
     text((-1 * angle * 180) / PI, 0 + 75, 0);
     
     // display cannon
-    fill(195, 255, 5);
+    fill(195, 255, 5, 50);
     stroke(0);
     ellipse(0, 0, 32, 32);
     
     pushMatrix();
     
     rotate(angle);
-    fill(195, 255, 5);
+    fill(195, 255, 5, 50);
     stroke(0);
     rect(0 + 75/2, 0, 75, 32);
     
