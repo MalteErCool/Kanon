@@ -14,15 +14,15 @@ class Power {
     mouse = new PVector(mouseX, mouseY);
     mouse.sub(location);
     
+    angle = atan2(mouse.y, mouse.x);
     // ToDo contrain direction...
     
     // max power
-    mouse.limit(210);
+    mouse.limit(200);
     
     // min power
-    if (mouse.mag() <= 210/2) {
-      angle = atan2(mouse.y, mouse.x);
-      mouse = new PVector(105 * cos(angle), 105*sin(angle));
+    if (mouse.mag() <= 100) {
+      mouse = new PVector(100 * cos(angle), 100 * sin(angle));
     }
     
     // power conversion
@@ -40,7 +40,25 @@ class Power {
     translate(location.x, location.y);
     line(0, 0, mouse.x, mouse.y);
     textSize(22);
-    text(angle, 20, 20);
+    text((-1 * angle * 180) / PI, 0 + 75, 0);
+    
+    // kanon løb
+    fill(195, 255, 5);
+    stroke(0);
+    ellipse(0, 0, 32, 32);
+    
+    pushMatrix();
+    
+    rotate(angle);
+    fill(195, 255, 5);
+    stroke(0);
+    rect(0 + 75/2, 0, 75, 32);
+    
+    popMatrix();
+    
+    fill(125, 255, 150);
+    stroke(0);
+    triangle(0,0, 0 - 16, 0 + 32, 0 + 16, 0 + 32);
   }
   
 }

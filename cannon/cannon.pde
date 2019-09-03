@@ -3,7 +3,7 @@ Power power = new Power();
 
 int i = 0;
 
-PVector location = new PVector(20, 600);
+PVector location = new PVector(50, 600);
 PVector velocity = new PVector(0, 0);
 PVector acceleration = new PVector(0, 0.091);
 
@@ -37,4 +37,5 @@ void draw() {
   power.shoot();
   power.update();
   power.display();
+  
 }

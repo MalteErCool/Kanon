@@ -23,6 +23,7 @@ class Ammo {
     }
     ammo.add(velocity);
     
+    fill(0);
     textSize(200);
     text(i, width/2 - 50, height/2 - 100, 200);
   }
