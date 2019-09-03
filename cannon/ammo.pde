@@ -9,14 +9,26 @@ class Ammo {
     w_ = w;
     h_ = h;
   }
-
+  
+  void coalition() {
+    if (ammo.x >= 1200) {
+      velocity = new PVector(0, 0);
+      i += 1;
+    }
+  }
+    
   void update() {
+    if (velocity.mag() > 0) {
+      velocity.add(acceleration);
+    }
     ammo.add(velocity);
+    
+    textSize(200);
+    text(i, width/2 - 50, height/2 - 100, 200);
   }
   
   void display() {
     fill(50, 50, 50);
     rect(ammo.x, ammo.y, w_, h_);
   }
-  
 }
