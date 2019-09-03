@@ -15,7 +15,6 @@ class Power {
     mouse.sub(location);
     
     angle = atan2(mouse.y, mouse.x);
-    // ToDo contrain direction...
     
     // max power
     mouse.limit(200);
@@ -30,6 +29,7 @@ class Power {
   }
   
   void shoot() {
+    // shoot add velocity
     if (keyPressed == true && key == 32 && velocity.mag() == 0) {
       velocity.x = power.x;
       velocity.y = power.y;
@@ -37,12 +37,15 @@ class Power {
   }
   
   void display() {
+    // display power
     translate(location.x, location.y);
     line(0, 0, mouse.x, mouse.y);
+    
+    // display angle
     textSize(22);
     text((-1 * angle * 180) / PI, 0 + 75, 0);
     
-    // kanon løb
+    // display cannon
     fill(195, 255, 5);
     stroke(0);
     ellipse(0, 0, 32, 32);
@@ -59,6 +62,5 @@ class Power {
     fill(125, 255, 150);
     stroke(0);
     triangle(0,0, 0 - 16, 0 + 32, 0 + 16, 0 + 32);
-  }
-  
+  } 
 }

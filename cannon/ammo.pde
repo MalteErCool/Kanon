@@ -1,6 +1,6 @@
 class Ammo {
   
-  PVector ammo;
+  PVector ammo = new PVector(0, 0);
   float w_;
   float h_;
  
@@ -28,8 +28,12 @@ class Ammo {
     text(i, width/2 - 50, height/2 - 100, 200);
   }
   
-  void display() {
+  void display() {   
+    pushMatrix();
+    translate(ammo.x, ammo.y);
+    rotate(velocity.mag());
     fill(50, 50, 50);
-    rect(ammo.x, ammo.y, w_, h_);
+    rect(0, 0, w_, h_);
+    popMatrix();
   }
 }
