@@ -3,7 +3,7 @@ class Ammo {
   PVector ammo = new PVector(0, 0);
   float w_;
   float h_;
-  boolean moving = false;
+  boolean rotate = false;
  
   Ammo(float x, float y, float w, float h) {
     ammo = new PVector(x, y);
@@ -13,15 +13,16 @@ class Ammo {
   
   void coalition() {
     if (ammo.x >= 1200) {
-      velocity = new PVector(0, 0);
-      moving = false;
+      velocity.set(0, 0);
+      rotate = false;
     }
   }
-    
+  
+  
   void update() {
     if (velocity.mag() > 0) {
       velocity.add(acceleration);
-      moving = true;
+      rotate = true;
     }
     ammo.add(velocity);
     
@@ -31,11 +32,12 @@ class Ammo {
   }
   
   void display() {
+    // display ammo
     pushMatrix();
     
     translate(ammo.x, ammo.y);
     
-    if (moving == true) {
+    if (rotate == true) {
       rotate(velocity.mag());
       fill(50, 50, 50);
       stroke(50, 50, 50);
