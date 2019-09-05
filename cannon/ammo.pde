@@ -1,34 +1,49 @@
 class Ammo {
   
+  // vars
   PVector ammo = new PVector(0, 0);
-  float w_;
-  float h_;
+  float w;
+  float h;
   boolean rotate = false;
  
-  Ammo(float x, float y, float w, float h) {
-    ammo = new PVector(x, y);
-    w_ = w;
-    h_ = h;
+  // create Ammo() at xy with width w and height h and parse w and h as w_ and h_ to display()
+  Ammo(float x_, float y_, float w_, float h_) {
+    ammo = new PVector(x_, y_);
+    w = w_;
+    h = h_;
   }
   
-  void coalition() {
-    if (ammo.x >= 1200) {
+  // check for hitbox
+  void hit() {
+    // if rect ammo hit surface then stop moving and rotating
+    if (ammo.y > 524) {
       velocity.set(0, 0);
       rotate = false;
+      
+      // if index i is less than 9 then change index by 1 else say "game over"
+      if (i < 9) {
+        i++;
+      } else {
+        fill(0);
+        textSize(50);
+        text("Game Over!", width/2 - 50, height/2, 200);
+      }
     }
   }
   
+  void counter() {
+    fill(0);
+    textSize(200);
+    text(counter, width/2 - 50, height/2 - 100, 200);
+  }
   
+  // move ammo
   void update() {
     if (velocity.mag() > 0) {
       velocity.add(acceleration);
       rotate = true;
     }
     ammo.add(velocity);
-    
-    fill(0);
-    textSize(200);
-    text(i, width/2 - 50, height/2 - 100, 200);
   }
   
   void display() {
@@ -41,11 +56,11 @@ class Ammo {
       rotate(velocity.mag());
       fill(50, 50, 50);
       stroke(50, 50, 50);
-      rect(0, 0, w_, h_);
+      rect(0, 0, w, h);
     } else {
       fill(50, 50, 50);
       stroke(50, 50, 50);
-      rect(0, 0, w_, h_);
+      rect(0, 0, w, h);
     }
     
     popMatrix();

@@ -10,8 +10,24 @@ class World {
   float lh;
   float lc;
   
-  World() {
-      
+  World(float x_, float y_, float w_, float h_, float c_) {
+    // solid
+    fill(0);
+    stroke(0);
+    rect(x_*0, y_, w_*1/3, h_);
+    // liquid
+    fill(0);
+    stroke(0);
+    rect(x_*1/3, y_, w_*1/3, h_);
+    lx = x_;
+    ly = y_;
+    lw = w_;
+    lh = h_;
+    lc = c_;
+    // solid
+    fill(0);
+    stroke(0);
+    rect(x_*2/3, y_, w_*1/3, h_);
   }
   
   // create solid(location x, location y, width, height, rgba, drag c)
