@@ -24,17 +24,19 @@ class Ammo {
       if (i < 9) {
         i++;
       } else {
+        textAlign(CENTER);
         fill(0);
         textSize(50);
-        text("Game Over!", width/2 - 50, height/2, 200);
+        text("Game Over!", width/2, 300, 200);
       }
     }
   }
   
   void counter() {
+    textAlign(CENTER);
     fill(0);
     textSize(200);
-    text(counter, width/2 - 50, height/2 - 100, 200);
+    text(counter, width/2, 200, 200);
   }
   
   // move ammo
@@ -53,13 +55,13 @@ class Ammo {
     translate(ammo.x, ammo.y);
     
     if (rotate == true) {
-      rotate(velocity.mag());
-      fill(50, 50, 50);
-      stroke(50, 50, 50);
+      rotate(abs(velocity.mag()));
+      noStroke();
+      fill(0);
       rect(0, 0, w, h);
     } else {
-      fill(50, 50, 50);
-      stroke(50, 50, 50);
+      noStroke();
+      fill(0);
       rect(0, 0, w, h);
     }
     

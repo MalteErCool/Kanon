@@ -48,28 +48,25 @@ class Power {
   void display() {
     // display power
     translate(location.x, location.y);
+    stroke(0);
     line(0, 0, mouse.x, mouse.y);
     
-    // display angle
-    textSize(22);
-    text((-1 * angle * 180) / PI, 0 + 75, 0);
-    
     // display cannon
-    fill(195, 255, 5, 50);
-    stroke(0);
+    noStroke();
+    fill(130, 130, 130);
     ellipse(0, 0, 32, 32);
     
     pushMatrix();
     
     rotate(angle);
-    fill(195, 255, 5, 50);
-    stroke(0);
+    noStroke();
+    fill(130, 130, 130, 200);
     rect(0 + 75/2, 0, 75, 32);
     
     popMatrix();
     
-    fill(125, 255, 150);
-    stroke(0);
+    noStroke();
+    fill(120, 100, 60);
     triangle(0,0, 0 - 16, 0 + 32, 0 + 16, 0 + 32);
   } 
 }

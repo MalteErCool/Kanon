@@ -14,7 +14,7 @@ void setup() {
 }
 
 void draw() {
-  background(255);
+  background(60, 200, 255);
   rectMode(CENTER);
   ammo[i].hit();
   ammo[i].counter();
@@ -29,7 +29,8 @@ void draw() {
   
   // floor
   pushMatrix();
-  fill(255, 200, 0, 50);
-  rect(608,142, 1280, 220);
+  noStroke();
+  fill(95, 215, 85);
+  rect(608, 142, 1280, 220);
   popMatrix();
 }
