@@ -1,14 +1,17 @@
 class Power {
   
+  // create vars
   PVector power;
   PVector mouse;
   float angle;
   
+  // create mouse vector
   Power() {
     angle = 0;
     mouse = new PVector(mouseX, mouseY);
   }
   
+  // constrain mouse vector location
   void contrain() {
     if (mouseX > location.x && mouseY < location.y) {
       mouse = new PVector(mouseX, mouseY);
@@ -21,9 +24,12 @@ class Power {
     }
   }
   
+  // convert mouse vector to power vector
   void update() {
     mouse.sub(location);  
     angle = atan2(mouse.y, mouse.x);
+    
+    // contrain mouse/power vector length/strength
     // max power
     mouse.limit(200);
     // min power
@@ -35,10 +41,14 @@ class Power {
     power = new PVector(mouse.x/20, mouse.y/20);
   }
   
+  // shoot ammo according to power
   void shoot() {
+    // when cannon loaded and ammo is not moving, shoot once if SPACE is pressed
     if (keyPressed == true && key == 32 && velocity.mag() == 0 && i < 10) {
+      // set velocity to power
       velocity.x = power.x;
       velocity.y = power.y;
+      // up shot counter by 1
       if (counter < 10) {
         counter++;
       }

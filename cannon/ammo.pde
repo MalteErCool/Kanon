@@ -1,6 +1,6 @@
 class Ammo {
   
-  // vars
+  // create vars
   PVector ammo = new PVector(0, 0);
   float w;
   float h;
@@ -15,12 +15,12 @@ class Ammo {
   
   // check for hitbox
   void hit() {
-    // if rect ammo hit surface then stop moving and rotating
+    // when ammo hit surface, stop moving and rotating
     if (ammo.y > 524) {
       velocity.set(0, 0);
       rotate = false;
       
-      // if index i is less than 9 then change index by 1 else say "game over"
+      // when index < 9, up index by 1 else display text
       if (i < 9) {
         i++;
       } else {
@@ -32,6 +32,7 @@ class Ammo {
     }
   }
   
+  // display shot counter
   void counter() {
     textAlign(CENTER);
     fill(0);
@@ -39,23 +40,25 @@ class Ammo {
     text(counter, width/2, 200, 200);
   }
   
-  // move ammo
+  // ammo mover
   void update() {
+    // when moving, apply gravity
     if (velocity.mag() > 0) {
-      velocity.add(acceleration);
+      velocity.add(gravity);
       rotate = true;
     }
+    // apply velocity and thus move ammo
     ammo.add(velocity);
   }
   
+  // display ammo
   void display() {
-    // display ammo
     pushMatrix();
     
     translate(ammo.x, ammo.y);
     
     if (rotate == true) {
-      rotate(abs(velocity.mag()));
+      rotate(velocity.mag());
       noStroke();
       fill(0);
       rect(0, 0, w, h);
